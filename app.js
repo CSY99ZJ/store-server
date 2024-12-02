@@ -45,6 +45,5 @@ app.use(KoaBody(koaBodyConfig));
 const Routers = require('./app/routers');
 app.use(Routers.routes()).use(Routers.allowedMethods());
 
-app.listen(Port, () => {
-  console.log(`服务器启动在${ Port }端口`);
-});
+// 不再使用 app.listen，导出回调函数供 Vercel 使用
+module.exports = app.callback();
